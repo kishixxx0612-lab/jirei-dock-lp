@@ -985,6 +985,11 @@
       if (!res.ok || String(data.success) !== 'true') throw new Error(data.message || res.status);
       location.href = THANKS_URL;
     } catch (err) {
+      console.warn('[contact form]', err.message);
+      // FormSubmit の有効化前は「This form needs Activation...」が返る
+      formError.textContent = /activat/i.test(err.message)
+        ? 'ただいまフォームの準備中のため送信できません。お手数ですが jirei.dock@gmail.com まで直接ご連絡ください。'
+        : '送信に失敗しました。通信環境をご確認のうえ、時間をおいて再度お試しください。';
       formError.classList.add('show');
       submitBtn.disabled = false;
       submitBtn.firstChild.textContent = '送信する';
