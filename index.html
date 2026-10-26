@@ -325,6 +325,7 @@
   .form-submit { text-align: center; margin-top: 36px; }
   .form-submit .btn-cta { min-width: 280px; }
   .form-submit .btn-cta[disabled] { opacity: .6; pointer-events: none; }
+  .form-privacy { margin-top: 14px; font-size: 12px; color: var(--text-mute); }
   .form-error {
     display: none; margin-top: 16px; padding: 12px 16px; border-radius: 10px;
     background: #FEF2F2; color: var(--danger); font-size: 14px; font-weight: 500;
@@ -856,6 +857,7 @@
         <div class="form-submit">
           <button type="submit" class="btn-cta" id="submitBtn">送信する<svg><use href="#i-arrow"/></svg></button>
           <p class="form-error" id="formError" role="alert">送信に失敗しました。通信環境をご確認のうえ、時間をおいて再度お試しください。</p>
+          <p class="form-privacy">入力いただいた情報は、お問い合わせへの回答以外には使用しません。</p>
         </div>
       </form>
     </div>
