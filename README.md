@@ -27,17 +27,16 @@ npx http-server -p 3004 -c-1 .
 2. このフォルダをリポジトリに push する
 
    ```bash
-   git remote add origin https://github.com/USERNAME/REPOSITORY.git
+   git remote add origin https://github.com/kishixxx0612-lab/jirei-dock-lp.git
    git push -u origin main
    ```
 
 3. リポジトリの **Settings → Pages** を開き、
    **Source: Deploy from a branch** ／ **Branch: `main`** ／ **Folder: `/ (root)`** を選んで Save
-4. 1〜2分後に `https://USERNAME.github.io/REPOSITORY/` で公開されます
+4. 1〜2分後に https://kishixxx0612-lab.github.io/jirei-dock-lp/ で公開されます
 
 ## 公開前のチェックリスト
 
-- [ ] `index.html` の `og:url` / `og:image` の `USERNAME` と `REPOSITORY` を実際の値に置き換える
 - [ ] フォーム送信を有効化する（下記「お問い合わせフォーム」参照）
 - [ ] HTML内の `<!-- 要確認 -->` 箇所の文言を原文と照合する
 - [ ] フッターの「運営会社」「プライバシーポリシー」のリンク先を設定する
