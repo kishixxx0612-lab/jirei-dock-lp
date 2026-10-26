@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>お問い合わせありがとうございます｜事例ドック</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#2563EB">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%232563EB'/%3E%3Cg fill='none' stroke='%23fff' stroke-width='2.6' stroke-linecap='round'%3E%3Ccircle cx='14.5' cy='14.5' r='7'/%3E%3Cpath d='m25 25-5.5-5.5M12 14.5h5M14.5 12v5'/%3E%3C/g%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  /* ===== Design tokens（index.html と共通） ===== */
+  :root {
+    --primary: #2563EB;
+    --primary-dark: #1D4ED8;
+    --primary-deep: #1E3A8A;
+    --primary-light: #DBEAFE;
+    --primary-pale: #EFF6FF;
+    --cta: #F97316;
+    --cta-dark: #EA580C;
+    --text: #0F172A;
+    --text-sub: #475569;
+    --text-mute: #94A3B8;
+    --border: #E2E8F0;
+    --shadow: 0 10px 30px -12px rgba(15, 23, 42, .18);
+    --shadow-cta: 0 10px 24px -8px rgba(249, 115, 22, .55);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0; min-height: 100vh; display: flex; flex-direction: column;
+    font-family: "Noto Sans JP", "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+    color: var(--text); line-height: 1.8; font-size: 16px;
+    background:
+      radial-gradient(circle at 85% 10%, rgba(37,99,235,.12), transparent 45%),
+      radial-gradient(circle at 10% 90%, rgba(249,115,22,.08), transparent 40%),
+      linear-gradient(180deg, var(--primary-pale), #fff 60%);
+  }
+  a { color: inherit; text-decoration: none; }
+  h1, h2, h3 { line-height: 1.4; margin: 0; font-weight: 900; letter-spacing: .02em; }
+  p { margin: 0; }
+  .container { width: 100%; max-width: 760px; margin: 0 auto; padding: 0 24px; }
+
+  /* Header */
+  .header { background: rgba(255,255,255,.92); border-bottom: 1px solid var(--border); }
+  .header-inner { display: flex; align-items: center; height: 68px; max-width: 1120px; }
+  .logo { display: flex; align-items: center; gap: 8px; font-weight: 900; font-size: 20px; }
+  .logo-mark {
+    width: 32px; height: 32px; border-radius: 9px;
+    background: linear-gradient(135deg, var(--primary), #60A5FA);
+    display: grid; place-items: center; color: #fff;
+  }
+  .logo-mark svg { width: 18px; height: 18px; }
+
+  /* Thanks */
+  main { flex: 1; padding: 72px 0 96px; }
+  .thanks-card {
+    background: #fff; border-radius: 24px; box-shadow: var(--shadow);
+    padding: 56px 48px; text-align: center;
+    animation: rise .8s ease both;
+  }
+  .ok {
+    width: 88px; height: 88px; margin: 0 auto 24px; border-radius: 50%;
+    background: var(--primary-light); color: var(--primary);
+    display: grid; place-items: center; position: relative;
+  }
+  .ok::after {
+    content: ""; position: absolute; inset: -8px; border-radius: 50%;
+    border: 2px solid var(--primary-light); animation: ring 1.6s ease-out .4s both;
+  }
+  .ok svg { width: 44px; height: 44px; stroke-dasharray: 30; stroke-dashoffset: 30; animation: draw .6s ease .3s forwards; }
+  .label { display: inline-block; font-size: 13px; font-weight: 700; letter-spacing: .15em; color: var(--primary); margin-bottom: 10px; }
+  h1 { font-size: clamp(22px, 4vw, 30px); }
+  .lead { margin-top: 18px; color: var(--text-sub); }
+
+  .next { margin-top: 44px; text-align: left; }
+  .next h2 { font-size: 18px; text-align: center; margin-bottom: 20px; }
+  .next h2 span { color: var(--primary); }
+  .steps { list-style: none; padding: 0; margin: 0; display: grid; gap: 12px; }
+  .steps li {
+    display: grid; grid-template-columns: auto 1fr; gap: 16px; align-items: start;
+    background: var(--primary-pale); border-radius: 14px; padding: 18px 20px;
+  }
+  .steps li.done { background: #fff; border: 1.5px solid var(--primary-light); }
+  .step-num {
+    width: 40px; height: 40px; border-radius: 50%; background: var(--primary); color: #fff;
+    display: grid; place-items: center; font-weight: 900; font-size: 15px;
+  }
+  .steps li.done .step-num { background: var(--primary-light); color: var(--primary); }
+  .steps li.done .step-num svg { width: 20px; height: 20px; }
+  .steps h3 { font-size: 16px; color: var(--primary-dark); }
+  .steps h3 .now { display: inline-block; font-size: 11px; background: var(--cta); color: #fff; padding: 1px 8px; border-radius: 99px; margin-left: 6px; vertical-align: middle; }
+  .steps p { font-size: 14px; color: var(--text-sub); margin-top: 2px; }
+
+  .note {
+    margin-top: 32px; padding: 16px 20px; border-radius: 12px; background: #F8FAFC;
+    border: 1px solid var(--border); font-size: 13px; color: var(--text-sub); text-align: left;
+  }
+  .note a { color: var(--primary); text-decoration: underline; word-break: break-all; }
+
+  .actions { margin-top: 36px; }
+  .btn-cta {
+    display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+    background: var(--cta); color: #fff; font-weight: 700; font-size: 17px;
+    padding: 16px 40px; border-radius: 999px; box-shadow: var(--shadow-cta);
+    transition: transform .2s, background .2s;
+  }
+  .btn-cta:hover { background: var(--cta-dark); transform: translateY(-2px); }
+  .btn-cta:focus-visible { outline: 3px solid var(--primary); outline-offset: 3px; }
+  .btn-cta svg { width: 20px; height: 20px; }
+
+  .footer { background: #0F172A; color: var(--text-mute); padding: 28px 0; font-size: 13px; text-align: center; }
+
+  @keyframes rise { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: none; } }
+  @keyframes draw { to { stroke-dashoffset: 0; } }
+  @keyframes ring { from { opacity: 1; transform: scale(.9); } to { opacity: 0; transform: scale(1.35); } }
+  @media (prefers-reduced-motion: reduce) {
+    .thanks-card, .ok::after { animation: none; }
+    .ok svg { animation: none; stroke-dashoffset: 0; }
+  }
+
+  /* ----- タブレット（768px〜1023px） ----- */
+  @media (max-width: 1023px) {
+    .container { padding: 0 32px; }
+    main { padding: 56px 0 80px; }
+  }
+
+  /* ----- スマホ（〜767px／375px基準） ----- */
+  @media (max-width: 767px) {
+    body { font-size: 14px; }
+    .container { padding: 0 16px; }
+    .header-inner { height: 60px; }
+    .logo { font-size: 18px; }
+    main { padding: 32px 0 56px; }
+    .thanks-card { padding: 40px 20px; border-radius: 20px; }
+    .ok { width: 72px; height: 72px; margin-bottom: 20px; }
+    .ok svg { width: 36px; height: 36px; }
+    .label { font-size: 12px; }
+    h1 { font-size: 21px; }
+    .lead { font-size: 14px; text-align: left; }
+    .next { margin-top: 36px; }
+    .next h2 { font-size: 17px; }
+    .steps li { gap: 12px; padding: 16px; }
+    .step-num { width: 34px; height: 34px; font-size: 13px; }
+    .steps h3 { font-size: 15px; }
+    .steps p { font-size: 13px; }
+    .note { font-size: 12px; padding: 14px 16px; }
+    .actions .btn-cta { width: 100%; font-size: 16px; }
+    .footer { font-size: 12px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="header">
+  <div class="container header-inner">
+    <a href="./" class="logo" aria-label="事例ドック トップへ">
+      <span class="logo-mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="6"/><path d="m20 20-4.5-4.5M9 11h4M11 9v4"/></svg></span>事例ドック
+    </a>
+  </div>
+</header>
+
+<main>
+  <div class="container">
+    <div class="thanks-card">
+      <div class="ok" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+      </div>
+      <span class="label">THANK YOU</span>
+      <h1>お問い合わせを<br>受け付けました</h1>
+      <p class="lead">事例ドックへお問い合わせいただき、誠にありがとうございます。<br>
+      いただいた内容を確認のうえ、担当者より無料30分オンライン相談の日程についてご連絡いたします。</p>
+
+      <section class="next" aria-labelledby="next-title">
+        <h2 id="next-title">今後の<span>流れ</span></h2>
+        <ol class="steps">
+          <li class="done">
+            <span class="step-num"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span>
+            <div><h3>お問い合わせ<span class="now">完了</span></h3><p>ご相談内容を受け付けました。</p></div>
+          </li>
+          <li>
+            <span class="step-num">2</span>
+            <div><h3>無料30分オンライン相談</h3><p>担当よりご連絡し、Web会議の日程を調整いたします。ご状況や課題感をお聞かせください。無理な営業は行いません。</p></div>
+          </li>
+          <li>
+            <span class="step-num">3</span>
+            <div><h3>ヒアリング・ご提案</h3><p>具体的な支援をご希望の場合、支援内容・成果物・期間・スケジュールをご提案します。</p></div>
+          </li>
+          <li>
+            <span class="step-num">4</span>
+            <div><h3>ご契約・サービス提供開始</h3><p>ご提案内容にご納得いただいたうえで、支援を開始します。</p></div>
+          </li>
+        </ol>
+      </section>
+
+      <p class="note">しばらく経っても担当者からの連絡がない場合は、お手数ですが <a href="mailto:jirei.dock@gmail.com">jirei.dock@gmail.com</a> までご連絡ください。迷惑メールフォルダに振り分けられている場合もございますので、あわせてご確認ください。</p>
+
+      <div class="actions">
+        <a href="./" class="btn-cta">トップページへ戻る<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer class="footer">
+  <small>Copyright © 2026 事例ドック</small>
+</footer>
+
+</body>
+</html>
